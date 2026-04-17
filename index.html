@@ -287,9 +287,9 @@ async function handleDepositFile(input){
 }
 
 async function claude(messages,maxTok=800){
-  const r=await fetch('https://api.anthropic.com/v1/messages',{
+  const r=await fetch('/.netlify/functions/claude',{
     method:'POST',
-    headers:{'Content-Type':'application/json','x-api-key':'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','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    headers:{'Content-Type':'application/json'},
     body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:maxTok,messages})
   });
   const d=await r.json();
